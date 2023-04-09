@@ -19,11 +19,11 @@ app.get('/', (req, res) =>
 );
 
 //get route for notes.html
-app.get('/', (req, res) =>
+app.get('/notes', (req, res) =>
   res.sendFile(path.join(__dirname, '/public/notes.html'))
 );
 
 //app listener once server has started
 app.listen(PORT, () =>
-  console.log(`App listening at http://localhost:${PORT} 🚀`)
+  console.log(`App listening at http://localhost:${PORT}`)
 );
