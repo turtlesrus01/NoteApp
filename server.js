@@ -8,6 +8,7 @@ const app = express();
 //init middleware (api, urlencoded)
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(express.static('public'));
 
 //port handler 
 const PORT = process.env.PORT || 3001;
