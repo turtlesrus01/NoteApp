@@ -2,6 +2,7 @@
 const notes =  require('express').Router();
 //const { readAndAppend } = require('../helpers/fsUtils')
 const { v4: uuidv4 } = require('uuid');
+const { readAndAppend } = require('../helpers/fsUtils');
 
 //GET for retrieving all notes
 notes.get('/', (req , res) => {
@@ -23,15 +24,21 @@ notes.post('/', (req,res) => {
     const newNote = {
       id: uuidv4(),
       title,
-      text
+      text,
     };
 
-  } else {
-    
-  }
+    readAndAppend(newNote, './db/db.json');
 
+    const response = {
+      status: 'success',
+      body: newNote
+    };
+
+    res.json(response);
+  } else {
+    res.status(400).send('Error in posting a new note.')
+  }
 });
   
-
-  
 //export statement for notes module
+module.exports = notes;
