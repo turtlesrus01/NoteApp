@@ -16,13 +16,13 @@ const writeToFile = (destination, content) =>
 //function to read data and append new data (readAndAppend)
 const readAndAppend = (newData, file) => {
   fs.readFile(file, "utf8", (err, data) => {
-    err ? console.error(err): 
-    (() => {
-      const parsedData = JSON.parse(data);
-      parsedData.push(newData);
-      writeToFile(file, parsedData);
-    })();
-      
+    err
+      ? console.error(err)
+      : (() => {
+          const parsedData = JSON.parse(data);
+          parsedData.push(newData);
+          writeToFile(file, parsedData);
+        })();
   });
 };
 
