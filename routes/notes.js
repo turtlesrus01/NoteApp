@@ -15,8 +15,23 @@ notes.get('/', (req , res) => {
 });
 
 //POST for submitting new notes
-
+notes.post('/', (req,res) => {
   //destructured items from request
+  const { title, text } = req.body;
   //if statement to check for all conditions met
+  if (title && text) {
+    const newNote = {
+      id: uuidv4(),
+      title,
+      text
+    };
+
+  } else {
+    
+  }
+
+});
+  
+
   
 //export statement for notes module
