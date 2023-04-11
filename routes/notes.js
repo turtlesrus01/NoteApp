@@ -4,9 +4,15 @@ const notes =  require('express').Router();
 const { v4: uuidv4 } = require('uuid');
 
 //GET for retrieving all notes
-//notes.get('/', (req , res) =>
-//need fsUtil helper completed
-//);
+notes.get('/', (req , res) => {
+  readFromFile('./db/feedback.json')
+  .then((data) => {
+    res.json(JSON.parse(data));
+  })
+  .catch((err) => {
+    res.status(500).send('Server error');
+  })
+});
 
 //POST for submitting new notes
 
