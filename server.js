@@ -10,6 +10,12 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/api', api);
 app.use(express.static('public'));
 
+//middleware for server logging 
+app.use((req, res, next) => {
+  console.log(`${req.method} ${req.path}`);
+  next();
+});
+
 //port handler 
 const PORT = process.env.PORT || 3001;
 
