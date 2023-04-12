@@ -7,11 +7,10 @@ const { v4: uuidv4 } = require("uuid");
 notes.get("/", (req, res) => {
   readFromFile("../db/db.json")
     .then((data) => {
-      console.log(res);
       res.json(JSON.parse(data));
-      
     })
     .catch((err) => {
+      console.error(err)
       res.status(500).send("Server error");
     });
 });
