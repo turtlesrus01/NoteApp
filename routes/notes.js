@@ -1,6 +1,6 @@
 //import modules (router, fsUtil, uuid)
 const notes = require("express").Router();
-const { readAndAppend } = require('../helpers/fsUtils')
+const { readFromFile, readAndAppend } = require('../helpers/fsUtils')
 const { v4: uuidv4 } = require("uuid");
 
 //GET for retrieving all notes
