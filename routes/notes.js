@@ -5,7 +5,7 @@ const { v4: uuidv4 } = require("uuid");
 
 //GET for retrieving all notes
 notes.get("/", (req, res) => {
-  readFromFile("./db/feedback.json")
+  readFromFile("./db/db.json")
     .then((data) => {
       res.json(JSON.parse(data));
     })
