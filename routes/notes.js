@@ -7,7 +7,9 @@ const { v4: uuidv4 } = require("uuid");
 notes.get("/", (req, res) => {
   readFromFile("./db/db.json")
     .then((data) => {
+      console.log(res);
       res.json(JSON.parse(data));
+      
     })
     .catch((err) => {
       res.status(500).send("Server error");
@@ -16,6 +18,7 @@ notes.get("/", (req, res) => {
 
 //POST for submitting new notes
 notes.post("/", (req, res) => {
+  console.log(res);
   //destructured items from request
   const { title, text } = req.body;
   //if statement to check for all conditions met
