@@ -5,7 +5,7 @@ const { v4: uuidv4 } = require("uuid");
 
 //GET for retrieving all notes
 notes.get("/", (req, res) => {
-  readFromFile("./db/db.json")
+  readFromFile("../db/db.json")
     .then((data) => {
       console.log(res);
       res.json(JSON.parse(data));
@@ -29,7 +29,7 @@ notes.post("/", (req, res) => {
       text,
     };
 
-    readAndAppend(newNote, "./db/db.json");
+    readAndAppend(newNote, "../db/db.json");
 
     const response = {
       status: "success",

@@ -1,13 +1,13 @@
 //init modules (fs, uuid, express, path)
 const express = require('express');
-const fs = require('fs');
-const uuid = require('uuid');
 const path = require('path');
 const app = express();
+const api = require('./routes/index.js');
 
 //init middleware (api, urlencoded)
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use('/api', api);
 app.use(express.static('public'));
 
 //port handler 
