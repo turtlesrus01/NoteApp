@@ -41,5 +41,14 @@ notes.post("/", (req, res) => {
   }
 });
 
+//DELETE for deleting notes
+notes.delete('/', (req,res) => {
+  console.log(req.body);
+  //readFromFile from db.JSON
+  //search through notes to find ID
+  
+})
+
+
 //export statement for notes module
 module.exports = notes;
