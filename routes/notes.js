@@ -58,7 +58,7 @@ notes.delete('/:id', (req, res) => {
       //this function will filter out the note of that specific id
       const eraseNote = jsonData.filter(note => note.id !== id);
       //creates new json without deleted note 
-      fs.writeFile('./db/db.json', JSON.stringify(eraseNote, null, 2), err => {
+      fs.writeFile('./db/db.json', JSON.stringify(eraseNote, null, 4), err => {
         //error handler callback function
         if (err) return res.status(422).send(err);
 
