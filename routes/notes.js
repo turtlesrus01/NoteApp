@@ -8,7 +8,7 @@ const { v4: uuidv4 } = require("uuid");
 notes.get("/", (req, res) => {
   readFromFile("./db/db.json")
     .then((data) => {
-      res.json(JSON.parse(data));
+      res.status(200).json(JSON.parse(data));
     })
     .catch((err) => {
       console.error(err)
@@ -28,15 +28,15 @@ notes.post("/", (req, res) => {
       title,
       text,
     };
-
+    //read and append will grab new note and append it to the old note
     readAndAppend(newNote, "./db/db.json");
-
+    //this response will send success status and show the new note object 
     const response = {
       status: "success",
       body: newNote,
     };
 
-    res.json(response);
+    res.status(200).json(response);
   } else {
     res.status(400).send("Error in posting a new note.");
   }
@@ -61,7 +61,7 @@ notes.delete('/:id', (req, res) => {
       fs.writeFile('./db/db.json', JSON.stringify(eraseNote, null, 4), err => {
         //error handler callback function
         if (err) return res.status(422).send(err);
-
+        //success status and log message
         console.log('Note deleted successfully');
         res.status(200).send('Note deleted successfully');
       });
